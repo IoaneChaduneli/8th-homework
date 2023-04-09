@@ -3,7 +3,7 @@ import inflect, sys
 
 def calculate_days(birth_date, today = datetime.now()):
     birth_date_of_iso = datetime.fromisoformat(birth_date)
-    passed_days = (today- birth_date_of_iso)
+    passed_days = (today - birth_date_of_iso)
     return passed_days
 
 def calculate_minutes(passed_days):
@@ -16,9 +16,10 @@ def calculate_minutes(passed_days):
         
         total_minutes = round(days * 24 * 60) + (hours * 60) + minutes
         return int(total_minutes)
+        
     else:
-        print("Zero Minutes")
-        exit()
+        return 'Zero Minutes'
+        
 
 def convet_number_to_words(minute):
     converter_of_letter = inflect.engine().number_to_words(minute, andword='')
@@ -32,7 +33,7 @@ def main():
             calculate_minute = calculate_minutes(calculate_day)
             result = convet_number_to_words(calculate_minute)
             print(result)
-            print(calculate_day)
+            
 
     except ValueError as e:
         sys.exit(f'{e} is not ISO format input')
